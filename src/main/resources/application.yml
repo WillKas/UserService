@@ -1,0 +1,51 @@
+server:
+  port: 10041
+
+spring:
+  application:
+    name: UserService
+  datasource:
+    url: jdbc:h2:mem:vm_dev_db
+    driver-class-name: org.h2.Driver
+    username: vm_dev
+    password: '2y^so8F;!4m'
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+  h2:
+    console:
+      enabled: true
+  security:
+    user:
+      name: 'admin'
+      password: 'E5o3z=39mXsv'
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:10041/.well-known/jwks.json
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: 'willian.mateus.betim@gmail.com'
+    password: 'irdj uewg ocdq qqzu'
+    properties:
+        mail:
+         smtp:
+          auth: true
+          starttls:
+            enable: true
+          debug: true
+
+springdoc:
+  api-docs:
+    path: /v1/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+app:
+  jwt:
+    secret: 'BvPHGM8C0ia4uOuxxqPD5DTbWC9F9TWvPStp3pb7ARo0oK2mJ3pd3YG4lxA9i8bj6OTbadwezxgeEByY'
+    expiration: 3600000
+
+
