@@ -13,6 +13,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import vmtecnologia.com.br.UserService.service.JwtService;
 
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * Filtro de autenticação JWT que intercepta requisições HTTP
@@ -56,10 +57,10 @@ public class AuthenticationFilter extends OncePerRequestFilter {
             FilterChain chain) throws ServletException, IOException {
 
         String header = req.getHeader("Authorization");
-        if (header != null && header.startsWith("Bearer ")) {
+        if (Objects.nonNull(header) && header.startsWith("Bearer ")) {
             String token = header.substring(7);
             String username = jwtService.extractUsername(token);
-            if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+            if (Objects.nonNull(username) && Objects.isNull(SecurityContextHolder.getContext().getAuthentication())) {
                 UserDetails user = userDetailsSvc.loadUserByUsername(username);
                 if (jwtService.validateToken(token, user)) {
                     UsernamePasswordAuthenticationToken auth =

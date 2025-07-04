@@ -215,7 +215,7 @@ public class UserService {
      */
     private void validateUser(UserModelRequest user) {
         String password = user.getPassword();
-        if (password == null) {
+        if (Objects.isNull(password)) {
             throw new PasswordNotProvidedException();
         }
 
@@ -230,7 +230,7 @@ public class UserService {
         }
 
         String email = user.getEmail();
-        if (email == null || !email.matches("^[\\w-.]+@[\\w-]+\\.[a-z]{2,}$")) {
+        if (Objects.isNull(email) || !email.matches("^[\\w-.]+@[\\w-]+\\.[a-z]{2,}$")) {
             throw new InvalidEmailException(email);
         }
     }

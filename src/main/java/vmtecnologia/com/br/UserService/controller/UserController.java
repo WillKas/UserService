@@ -142,7 +142,7 @@ public class UserController {
         }
 
         UserModelResponse user = userService.findById(id);
-        if (user == null) {
+        if (Objects.isNull(user)) {
             log.warn("findById() -> Usuario com ID {} não encontrado.", id);
             return ResponseEntity.notFound().build();
         }

@@ -6,6 +6,7 @@ import vmtecnologia.com.br.UserService.entity.UserEntity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Constrói especificações JPA dinâmicas para filtragem de {@link UserEntity}
@@ -37,19 +38,19 @@ public interface UserSpecification {
             try {
 
                 // Adiciona o filtro para o nome de usuário
-                if (username != null && !username.isEmpty()) {
+                if (Objects.nonNull(username) && !username.isEmpty()) {
                     String pattern = "%" + username.toLowerCase() + "%";
                     predicates.add(cb.like(cb.lower(root.get("username")), pattern));
                 }
 
                 // Adiciona o filtro para o email
-                if (email != null && !email.isEmpty()) {
+                if (Objects.nonNull(email) && !email.isEmpty()) {
                     String pattern = "%" + email.toLowerCase() + "%";
                     predicates.add(cb.like(cb.lower(root.get("email")), pattern));
                 }
 
                 // Adiciona o filtro para o status "enabled"
-                if (enabled != null) {
+                if (Objects.nonNull(enabled)) {
                     predicates.add(cb.equal(root.get("enabled"), enabled));
                 }
 
