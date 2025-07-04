@@ -250,3 +250,56 @@ Essa cobertura em três níveis (controller, serviço e integração via MockMvc
 3. **Erros** são tratados de forma consistente.
 
 Com essa abordagem, ganhamos confiança para evoluir a aplicação sem quebrar funcionalidades existentes.
+
+---
+## Possibilidades para frontend
+
+Para a camada de apresentação (frontend), algumas tecnologias populares são:
+
+### JSP (JavaServer Pages)
+
+**Prós**:
+
+* Totalmente integrado ao ciclo de request/response do Spring MVC.
+* Fácil configuração em servidores de aplicação Java (Tomcat, WildFly).
+* Adequado para aplicações simples ou legadas.
+  **Contras**:
+* Mistura código Java e HTML, tornando manutenção e testes mais difíceis.
+* Escalabilidade limitada em SPAs mais complexas.
+
+### JSF (JavaServer Faces)
+
+**Prós**:
+
+* Abordagem baseada em componentes reutilizáveis.
+* Integração nativa com Contexts and Dependency Injection (CDI).
+* RichFaces, PrimeFaces e outros frameworks complementares.
+  **Contras**:
+* Curva de aprendizado acentuada.
+* Estado do componente mantido no servidor, gerando overhead e complexidade de cluster.
+* Resposta mais lenta para interações AJAX em grandes árvores de componentes.
+
+### Angular
+
+**Prós**:
+
+* Framework completo para SPAs, com CLI, roteamento e internacionalização.
+* Arquitetura unidirecional baseada em componentes e injeção de dependência.
+* Ferramentas de teste integradas (Karma, Jasmine).
+  **Contras**:
+* Tamanho do bundle inicial relativamente grande.
+* Curva de aprendizado elevada devido a TypeScript e conceitos avançados.
+* Atualizações de versão podem exigir refatorações significativas.
+
+### Vue.js
+
+**Prós**:
+
+* Framework progressivo: pode ser adotado gradualmente em partes da aplicação.
+* Sintaxe simples e reatividade direta nos templates.
+* Bundle mais leve comparado ao Angular.
+  **Contras**:
+* Ecossistema menor do que Angular em termos de ferramentas oficiais.
+* Pouca padronização entre bibliotecas de terceiros, exigindo escolhas de arquitetura.
+
+> A escolha ideal depende dos requisitos de projeto, equipe e infraestrutura disponíveis.
